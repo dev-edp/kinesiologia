@@ -1,0 +1,20 @@
+{
+  "language": "HTML + Vanilla JavaScript",
+  "runtime": "Static files (no server runtime)",
+  "framework": "Static HTML (Caddy file_server)",
+  "ssr": null,
+  "css": "Tailwind CSS 4",
+  "build": "tailwindcss CLI + bash build script",
+  "database": null,
+  "services": ["Leaflet 1.9.4 (CDN)", "Carto Positron tiles"],
+  "key_libs": ["Leaflet", "Fraunces (self-hosted, latin+latin-ext merged woff2)", "Inter Tight (self-hosted, latin+latin-ext merged woff2)"],
+  "features": [
+    "Trilingual ES/EN/SL with hreflang",
+    "Leaflet map with custom GM monogram marker",
+    "Photo gallery with lightbox",
+    "Google reviews testimonials",
+    "Schema.org LocalBusiness + HealthAndBeautyBusiness JSON-LD",
+    "Scroll-based header state",
+    "IntersectionObserver scroll reveals"
+  ]
+}
