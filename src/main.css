@@ -1,37 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand palette — therapeutic teal + Canarian terracotta warmth */
-  --color-bone: #f4f5f3;
-  --color-paper: #fafaf8;
-  --color-ink: #16201c;
-  --color-ink-soft: #1f2a24;
-  --color-ink-muted: #4a544d;
-  --color-rule: #d9dcd5;
-  --color-rule-soft: #e5e7e2;
+  /* Brand palette — anchored on Kinesiología Terapéutica GM business-card blue */
+  --color-bone: #f3f5f8;
+  --color-paper: #ffffff;
+  --color-ink: #0d1d2c;
+  --color-ink-soft: #1a2a3a;
+  --color-ink-muted: #4a5a6c;
+  --color-ink-faded: #7a8a9a;
+  --color-rule: #d6dde4;
+  --color-rule-soft: #e6ebf0;
 
-  --color-moss: #243f38;        /* primary — deep therapeutic moss */
-  --color-moss-light: #355a50;
-  --color-sage: #7d8c73;        /* mid accent */
-  --color-sage-soft: #b8c0a9;
+  /* Brand blue from logo / business card */
+  --color-brand: #006ab3;
+  --color-brand-deep: #00528a;
+  --color-brand-darker: #003d68;
+  --color-brand-light: #2891d8;
+  --color-brand-soft: #d8e8f4;
+  --color-brand-wash: #eef4fa;
 
-  --color-clay: #c46845;        /* warm Canarian terracotta */
-  --color-clay-light: #d88562;
-  --color-clay-dark: #a4522f;
-  --color-clay-wash: #f0dbce;
+  /* Accent — terracotta dots from logo */
+  --color-accent: #c95d52;
+  --color-accent-dark: #a4493f;
+  --color-accent-soft: #f3d8d3;
 
-  --color-sand: #e8dfce;
-  --color-shell: #ede7db;
-
-  /* Typography */
-  --font-display: "Canela", "Fraunces", "Playfair Display", Georgia, serif;
-  --font-serif: "Fraunces", "Playfair Display", Georgia, serif;
-  --font-sans: "Inter Tight", "Inter", system-ui, -apple-system, sans-serif;
+  /* Typography — Saira (Klavika-spirited geometric sans) for everything */
+  --font-sans: "Klavika", "Saira", "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Klavika", "Saira", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
   /* Type scale */
-  --text-hero: clamp(3.5rem, 9vw, 8rem);
-  --text-display: clamp(2.5rem, 6vw, 5.5rem);
+  --text-hero: clamp(3rem, 7.5vw, 6.5rem);
+  --text-display: clamp(2.25rem, 5vw, 4.5rem);
 }
 
 /* Base overrides */
@@ -47,19 +47,18 @@
     font-family: var(--font-sans);
     background: var(--color-bone);
     color: var(--color-ink);
-    font-feature-settings: "ss01", "ss03", "cv11";
     letter-spacing: -0.005em;
   }
-  ::selection { background: var(--color-moss); color: var(--color-paper); }
+  ::selection { background: var(--color-brand); color: var(--color-paper); }
 
   h1, h2, h3, h4, h5 {
-    font-family: var(--font-serif);
+    font-family: var(--font-display);
     letter-spacing: -0.02em;
-    line-height: 0.98;
+    line-height: 1;
+    font-weight: 700;
   }
 
   .font-display { font-family: var(--font-display); }
-  .font-serif { font-family: var(--font-serif); }
 
   img { display: block; max-width: 100%; height: auto; }
 
@@ -67,7 +66,7 @@
   ::-webkit-scrollbar { width: 12px; height: 12px; }
   ::-webkit-scrollbar-track { background: var(--color-paper); }
   ::-webkit-scrollbar-thumb { background: var(--color-rule); border-radius: 0; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--color-sage); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-brand-light); }
 }
 
 @layer components {
@@ -75,7 +74,7 @@
   .eyebrow {
     font-family: var(--font-sans);
     font-size: 11px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.22em;
     text-transform: uppercase;
   }
@@ -86,46 +85,54 @@
     align-items: center;
     gap: 0.6rem;
     padding: 0.95rem 1.5rem;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.04em;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     transition: transform 200ms ease, background 200ms ease, color 200ms ease;
-    border-radius: 0;
+    border-radius: 999px;
   }
   .btn-primary {
-    background: var(--color-moss);
+    background: var(--color-brand);
     color: var(--color-paper);
   }
   .btn-primary:hover {
-    background: var(--color-ink);
+    background: var(--color-brand-deep);
     transform: translateY(-1px);
   }
   .btn-outline {
-    border: 1px solid currentColor;
+    border: 1.5px solid currentColor;
     color: var(--color-ink);
   }
   .btn-outline:hover {
     background: var(--color-ink);
     color: var(--color-paper);
   }
-  .btn-clay {
-    background: var(--color-clay);
+  .btn-accent {
+    background: var(--color-accent);
     color: var(--color-paper);
   }
-  .btn-clay:hover {
-    background: var(--color-clay-dark);
+  .btn-accent:hover {
+    background: var(--color-accent-dark);
     transform: translateY(-1px);
   }
 
   /* Rule */
   .hairline { height: 1px; background: var(--color-rule); }
 
-  /* Logo letterform */
-  .mark-km {
-    font-family: var(--font-serif);
-    font-weight: 400;
-    font-style: italic;
-    letter-spacing: -0.04em;
+  /* Brand pill — small inline oval matching the logo */
+  .brand-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-brand);
+    color: var(--color-paper);
+    border-radius: 999px;
+    padding: 0.25rem 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    font-size: 0.75rem;
+    text-transform: uppercase;
   }
 
   /* Subtle reveal on scroll */
@@ -143,7 +150,7 @@
   .leaflet-popup-content-wrapper {
     background: var(--color-ink);
     color: var(--color-paper);
-    border-radius: 0;
+    border-radius: 4px;
     box-shadow: 0 6px 28px rgba(0,0,0,0.18);
   }
   .leaflet-popup-content { margin: 18px 20px; font-size: 13px; line-height: 1.5; }
@@ -151,7 +158,7 @@
   .leaflet-container a.leaflet-popup-close-button { color: var(--color-paper); }
 
   /* Reading max-width */
-  .prose-measure { max-width: 62ch; }
+  .prose-measure { max-width: 58ch; }
 }
 
 /* Print */
@@ -160,6 +167,6 @@
 }
 
 /* Tailwind scans these locations for class usage */
-@source "../dist/**/*.html";
-@source "../dist/**/*.js";
+@source "../docs/**/*.html";
+@source "../docs/**/*.js";
 @source "../src/**/*.html";

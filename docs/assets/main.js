@@ -237,23 +237,25 @@
       { subdomains: "abcd", maxZoom: 19, opacity: 0.9 }
     ).addTo(map);
 
-    // Custom marker
+    // Custom marker — brand blue oval matching the logo
     const icon = L.divIcon({
       className: "kt-marker",
       html: `
-        <div style="position:relative; width:56px; height:56px; transform:translate(-50%,-100%);">
-          <div style="width:54px;height:54px;background:#243f38;border:3px solid #fafaf8;border-radius:50%;box-shadow:0 6px 24px rgba(22,32,28,0.35);display:flex;align-items:center;justify-content:center;color:#fafaf8;font-family:Fraunces,Georgia,serif;font-style:italic;font-size:22px;font-weight:500;">GM</div>
-          <div style="position:absolute;left:50%;top:calc(100% - 4px);width:2px;height:14px;background:#243f38;"></div>
+        <div style="position:relative; width:64px; height:56px; transform:translate(-50%,-100%);">
+          <div style="width:62px;height:42px;background:#006ab3;border:3px solid #ffffff;border-radius:999px;box-shadow:0 6px 24px rgba(13,29,44,0.35);display:flex;align-items:center;justify-content:center;color:#ffffff;font-family:Saira,Inter,system-ui,sans-serif;font-weight:700;font-size:16px;letter-spacing:0.04em;">GM</div>
+          <div style="position:absolute;left:50%;top:calc(100% - 14px);width:2px;height:14px;background:#006ab3;"></div>
         </div>`,
-      iconSize: [56, 70],
-      iconAnchor: [28, 70],
+      iconSize: [64, 56],
+      iconAnchor: [32, 56],
     });
+    const langPath = (location.pathname || "/").includes("/sl/") ? "sl" : (location.pathname || "/").includes("/es/") ? "es" : "en";
+    const directionsLabel = langPath === "sl" ? "Kako do tja" : langPath === "es" ? "Cómo llegar" : "Get directions";
     L.marker(coords, { icon })
       .addTo(map)
       .bindPopup(
-        '<div style="font-family:Fraunces,Georgia,serif;font-size:15px;margin-bottom:4px">Kinesiología Terapéutica GM</div>' +
-          '<div style="opacity:0.8">C/ Las Hiedras 23 · 38418 Los Realejos</div>' +
-          '<div style="margin-top:10px"><a href="https://www.google.com/maps/dir/?api=1&destination=28.3991721,-16.5837597" target="_blank" rel="noopener" style="color:#d88562;text-decoration:underline">Cómo llegar</a></div>'
+        '<div style="font-family:Saira,Inter,system-ui,sans-serif;font-size:15px;font-weight:700;margin-bottom:4px">Kinesiología Terapéutica GM</div>' +
+          '<div style="opacity:0.8">C/ Las Hiedras 23 · La Longuera · 38418 Los Realejos</div>' +
+          '<div style="margin-top:10px"><a href="https://www.google.com/maps/dir/?api=1&destination=28.3991721,-16.5837597" target="_blank" rel="noopener" style="color:#006ab3;font-weight:600;text-decoration:underline">' + directionsLabel + '</a></div>'
       );
   }
   if (document.readyState === "complete") initMap();
