@@ -2,3 +2,7 @@ node_modules/
 photo*.jpg
 *.log
 .DS_Store
+
+# Tooling caches
+.codex
+.playwright-cli/
