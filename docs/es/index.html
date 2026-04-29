@@ -74,11 +74,13 @@
       </span>
     </a>
     <nav class="hidden lg:flex items-center gap-9 text-[12px] font-medium tracking-wider uppercase" aria-label="Primaria">
-      <a href="#metodo" class="hover:opacity-70 transition">Método</a>
-      <a href="#servicios" class="hover:opacity-70 transition">Servicios</a>
-      <a href="#empresa" class="hover:opacity-70 transition">Empresas</a>
-      <a href="#testimonios" class="hover:opacity-70 transition">Testimonios</a>
-      <a href="#galeria" class="hover:opacity-70 transition">Galería</a>
+      <a href="#sobre" class="hover:opacity-70 transition">Sobre mí</a>
+      <a href="#trabajemos" class="hover:opacity-70 transition">Trabaja conmigo</a>
+      <a href="#vita" class="hover:opacity-70 transition">Experiencia</a>
+      <a href="#empresa" class="hover:opacity-70 transition inline-flex items-center gap-2">
+        <span class="h-1.5 w-1.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span>
+        Para empresas
+      </a>
       <a href="#contacto" class="hover:opacity-70 transition">Contacto</a>
     </nav>
     <div class="flex items-center gap-4 text-[12px]">
@@ -88,6 +90,7 @@
         <a href="/kinesiologia/es/" class="underline underline-offset-4 decoration-[1.5px]" aria-current="page">ES</a>
         <span class="opacity-30">/</span>
         <a href="/kinesiologia/sl/" class="opacity-70 hover:opacity-100 transition">SL</a>
+        <!-- ES sigue accesible aquí porque es la página actual; está oculta del selector en EN/SL -->
       </div>
       <a href="tel:+34658725177" class="hidden md:inline-flex btn btn-primary text-[11px] py-2 px-4">Llamar</a>
       <button id="menu-toggle" class="lg:hidden inline-flex flex-col gap-[5px] p-2" aria-label="Abrir menú" aria-expanded="false">
@@ -107,12 +110,13 @@
     </button>
   </div>
   <nav class="flex-1 flex flex-col justify-center items-start px-10 gap-6 text-3xl font-semibold tracking-tight" aria-label="Móvil">
-    <a href="#metodo" data-close>Método</a>
-    <a href="#servicios" data-close>Servicios</a>
-    <a href="#empresa" data-close>Para empresas</a>
-    <a href="#testimonios" data-close>Testimonios</a>
-    <a href="#galeria" data-close>Galería</a>
-    <a href="#vita" data-close>Vita y fuentes</a>
+    <a href="#sobre" data-close>Sobre mí</a>
+    <a href="#trabajemos" data-close>Trabaja conmigo</a>
+    <a href="#vita" data-close>Experiencia</a>
+    <a href="#empresa" data-close class="inline-flex items-center gap-3">
+      <span class="h-2.5 w-2.5 rounded-full bg-accent shrink-0" aria-hidden="true"></span>
+      Para empresas
+    </a>
     <a href="#contacto" data-close>Contacto</a>
   </nav>
   <div class="px-10 pb-10 flex items-center justify-between text-sm">
@@ -147,7 +151,6 @@
     <div class="flex-1 flex items-center px-6 md:px-10">
       <div class="grid grid-cols-12 gap-6 w-full">
         <div class="col-span-12 lg:col-span-9">
-          <p class="eyebrow text-paper/70 mb-6">Los Realejos · La Longuera · Tenerife</p>
           <h1 class="text-[clamp(2.6rem,7.2vw,6.5rem)] font-bold leading-[0.95] tracking-tight">
             El cuerpo que <em class="font-light italic">se mueve</em><br>
             es el cuerpo <span class="text-brand-light">que sana.</span>
@@ -168,14 +171,13 @@
       <button type="button" aria-label="Slide 2" data-dot="1" class="h-1.5 w-7 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
       <button type="button" aria-label="Slide 3" data-dot="2" class="h-1.5 w-7 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
     </div>
-    <div class="border-t border-paper/15 px-6 md:px-10 py-4 flex items-center justify-between text-[10.5px] font-medium tracking-[0.22em] uppercase text-paper/65">
-      <span>Abierto hoy · 08:00 – 20:30</span>
-      <a href="https://www.google.com/maps/place/Kinesiolog%C3%ADa+Terap%C3%A9utica+GM/@28.3991721,-16.5837597,15z/data=!4m2!3m1!1s0xc6a7f09ca2813c9:0x1a92725142c33b7d" target="_blank" rel="noopener noreferrer" class="underline underline-offset-4">Cómo llegar</a>
+    <div class="border-t border-paper/15 px-6 md:px-10 py-4 flex items-center justify-center text-[10.5px] font-medium tracking-[0.22em] uppercase text-paper/65">
+      <a href="#sobre" class="underline underline-offset-4">¿Cómo trabajo?</a>
     </div>
   </div>
 </section>
 
-<section class="bg-paper">
+<section id="sobre" class="bg-paper">
   <div class="px-6 md:px-10 py-20 md:py-28 max-w-7xl mx-auto">
     <p class="eyebrow text-brand mb-8">01 · Enfoque</p>
     <p class="text-[clamp(1.6rem,2.6vw,2.4rem)] leading-[1.2] text-ink font-light max-w-4xl">
@@ -222,7 +224,7 @@
   </div>
 </section>
 
-<section class="bg-brand text-paper">
+<section id="trabajemos" class="bg-brand text-paper">
   <div class="px-6 md:px-10 py-20 md:py-28 max-w-7xl mx-auto">
     <div class="grid grid-cols-12 gap-y-10 md:gap-10 mb-14">
       <div class="col-span-12 lg:col-span-4">
@@ -432,12 +434,11 @@
     </div>
     <nav class="col-span-6 md:col-span-2 text-sm text-paper/70 space-y-2" aria-label="Sitio">
       <p class="eyebrow text-paper/40 mb-2">Sitio</p>
-      <a href="#metodo" class="block hover:text-paper transition">Método</a>
-      <a href="#servicios" class="block hover:text-paper transition">Servicios</a>
-      <a href="#empresa" class="block hover:text-paper transition">Empresas</a>
-      <a href="#testimonios" class="block hover:text-paper transition">Testimonios</a>
-      <a href="#galeria" class="block hover:text-paper transition">Galería</a>
-      <a href="#vita" class="block hover:text-paper transition">Vita</a>
+      <a href="#sobre" class="block hover:text-paper transition">Sobre mí</a>
+      <a href="#trabajemos" class="block hover:text-paper transition">Trabaja conmigo</a>
+      <a href="#vita" class="block hover:text-paper transition">Experiencia</a>
+      <a href="#empresa" class="block hover:text-paper transition">Para empresas</a>
+      <a href="#contacto" class="block hover:text-paper transition">Contacto</a>
     </nav>
     <div class="col-span-6 md:col-span-2 text-sm text-paper/70 space-y-2">
       <p class="eyebrow text-paper/40 mb-2">Idiomas</p>

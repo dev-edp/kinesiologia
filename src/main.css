@@ -147,6 +147,9 @@
 
   /* Leaflet override */
   .leaflet-container { font-family: var(--font-sans); }
+  /* Contain Leaflet's internal z-indexes (controls reach 1000) so they cannot
+     escape over the fixed header / overlays. */
+  #map { isolation: isolate; }
   .leaflet-popup-content-wrapper {
     background: var(--color-ink);
     color: var(--color-paper);
