@@ -38,6 +38,9 @@
   <link rel="stylesheet" href="/kinesiologia/fonts.css">
   <link rel="stylesheet" href="/kinesiologia/assets/main.css">
 
+  <!-- Restore saved font choice before paint to avoid a flash of the wrong font. -->
+  <script>(function(){try{var f=localStorage.getItem("kt-font");if(f&&f!=="saira")document.documentElement.setAttribute("data-font",f);}catch(e){}})();</script>
+
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -84,6 +87,23 @@
       <a href="#kontakt" class="hover:opacity-70 transition">Kontakt</a>
     </nav>
     <div class="flex items-center gap-4 text-[12px]">
+      <!-- Izbira pisave (desktop) -->
+      <div class="relative hidden md:block" data-font-picker>
+        <button type="button" data-font-toggle aria-haspopup="listbox" aria-expanded="false" aria-label="Izberi pisavo" class="inline-flex items-center gap-1.5 px-2 py-1.5 text-[11px] font-medium tracking-wider uppercase opacity-80 hover:opacity-100 transition">
+          <span class="text-[14px] tracking-normal" aria-hidden="true">Aa</span>
+          <span class="hidden xl:inline" data-font-current>Saira</span>
+          <svg viewBox="0 0 12 12" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg>
+        </button>
+        <ul data-font-list role="listbox" aria-label="Pisava" class="hidden absolute right-0 top-full mt-2 w-64 rounded-md bg-paper text-ink shadow-2xl border border-rule overflow-hidden z-[55]">
+          <li><button type="button" data-font-option="saira"     class="font-option" style="font-family:'Saira',system-ui,sans-serif"><span class="font-option-label">Saira</span><span class="font-option-note">Privzeto · v duhu Klavike</span></button></li>
+          <li><button type="button" data-font-option="helvetica" class="font-option" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif"><span class="font-option-label">Helvetica Neue</span><span class="font-option-note">Klasika · sistemska</span></button></li>
+          <li><button type="button" data-font-option="inter"     class="font-option" style="font-family:'Inter',system-ui,sans-serif"><span class="font-option-label">Inter</span><span class="font-option-note">Sodobna · nevtralna</span></button></li>
+          <li><button type="button" data-font-option="plex"      class="font-option" style="font-family:'IBM Plex Sans',system-ui,sans-serif"><span class="font-option-label">IBM Plex Sans</span><span class="font-option-note">Uredniška · prizemljena</span></button></li>
+          <li><button type="button" data-font-option="manrope"   class="font-option" style="font-family:'Manrope',system-ui,sans-serif"><span class="font-option-label">Manrope</span><span class="font-option-note">Geometrijska · uglajena</span></button></li>
+          <li><button type="button" data-font-option="dm"        class="font-option" style="font-family:'DM Sans',system-ui,sans-serif"><span class="font-option-label">DM Sans</span><span class="font-option-note">Čista · sodobna</span></button></li>
+        </ul>
+      </div>
+
       <div class="hidden md:flex items-center gap-2 px-1 font-medium" aria-label="Jeziki">
         <a href="/kinesiologia/" class="opacity-70 hover:opacity-100 transition">EN</a>
         <!-- ES začasno skrita -->
@@ -121,6 +141,23 @@
     </a>
     <a href="#kontakt" data-close>Kontakt</a>
   </nav>
+  <div class="px-10 pb-6 border-t border-paper/15 pt-6">
+    <p class="eyebrow text-paper/50 mb-3">Pisava</p>
+    <div class="relative" data-font-picker>
+      <button type="button" data-font-toggle aria-haspopup="listbox" aria-expanded="false" class="w-full inline-flex items-center justify-between gap-2 px-4 py-3 border border-paper/30 rounded-md text-sm">
+        <span class="inline-flex items-center gap-3"><span class="text-base" aria-hidden="true">Aa</span><span data-font-current>Saira</span></span>
+        <svg viewBox="0 0 12 12" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg>
+      </button>
+      <ul data-font-list role="listbox" aria-label="Pisava" class="hidden absolute left-0 right-0 bottom-full mb-2 rounded-md bg-paper text-ink shadow-2xl border border-rule overflow-hidden z-[65]">
+        <li><button type="button" data-font-option="saira"     class="font-option" style="font-family:'Saira',system-ui,sans-serif"><span class="font-option-label">Saira</span><span class="font-option-note">Privzeto · v duhu Klavike</span></button></li>
+        <li><button type="button" data-font-option="helvetica" class="font-option" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif"><span class="font-option-label">Helvetica Neue</span><span class="font-option-note">Klasika · sistemska</span></button></li>
+        <li><button type="button" data-font-option="inter"     class="font-option" style="font-family:'Inter',system-ui,sans-serif"><span class="font-option-label">Inter</span><span class="font-option-note">Sodobna · nevtralna</span></button></li>
+        <li><button type="button" data-font-option="plex"      class="font-option" style="font-family:'IBM Plex Sans',system-ui,sans-serif"><span class="font-option-label">IBM Plex Sans</span><span class="font-option-note">Uredniška · prizemljena</span></button></li>
+        <li><button type="button" data-font-option="manrope"   class="font-option" style="font-family:'Manrope',system-ui,sans-serif"><span class="font-option-label">Manrope</span><span class="font-option-note">Geometrijska · uglajena</span></button></li>
+        <li><button type="button" data-font-option="dm"        class="font-option" style="font-family:'DM Sans',system-ui,sans-serif"><span class="font-option-label">DM Sans</span><span class="font-option-note">Čista · sodobna</span></button></li>
+      </ul>
+    </div>
+  </div>
   <div class="px-10 pb-10 flex items-center justify-between text-sm">
     <div class="flex items-center gap-3">
       <a href="/kinesiologia/">EN</a>
@@ -148,35 +185,52 @@
       <img src="https://s3.edpid.com/kinesiologia/gallery/balance-and-coordination.webp" alt="Delo na ravnotežju in koordinaciji na prostem z Atlantikom v ozadju." width="1475" height="1920" class="absolute inset-0 h-full w-full object-cover" loading="lazy">
     </div>
   </div>
-  <div class="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/40 to-ink/85 pointer-events-none"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-transparent pointer-events-none"></div>
+  <div class="absolute inset-0 hero-scrim pointer-events-none"></div>
 
   <div class="relative h-full flex-1 flex flex-col">
-    <div class="h-24 md:h-28 shrink-0"></div>
-    <div class="flex-1 flex items-center px-6 md:px-10">
+    <div class="h-24 md:h-32 shrink-0"></div>
+    <div class="flex-1 flex items-end px-6 md:px-14 pb-14 md:pb-20">
       <div class="grid grid-cols-12 gap-6 w-full">
-        <div class="col-span-12 lg:col-span-9">
-          <h1 class="text-[clamp(2.6rem,7.2vw,6.5rem)] font-bold leading-[0.95] tracking-tight">
-            Telo, ki se <em class="font-light italic">giblje</em>,<br>
-            je telo, <span class="text-brand-light">ki ozdravi.</span>
+        <div class="col-span-12 lg:col-span-9 xl:col-span-8">
+          <p class="eyebrow text-brand-light mb-7">Kinesiología Terapéutica GM</p>
+
+          <h1 class="text-[clamp(2.2rem,5.6vw,5.25rem)] font-semibold leading-[1.06] tracking-tight max-w-[20ch]">
+            Gibanje in sprostitev sta<br class="hidden md:inline">
+            <em class="font-light italic text-brand-light">nujno zdravilo.</em>
           </h1>
-          <p class="mt-7 max-w-xl text-base md:text-lg text-paper/80 leading-relaxed">
-            Kineziologija, terapevtska masaža in osebno trenerstvo z individualnim načrtom. Dvanajst let kliničnih izkušenj, na severni obali Tenerifov.
+
+          <p class="mt-9 text-lg md:text-2xl text-paper leading-snug font-light max-w-2xl">
+            Skrbi za telo — redno in premišljeno.
           </p>
-          <div class="mt-8 flex flex-wrap gap-3">
+
+          <p class="mt-6 text-[15px] md:text-[17px] text-paper/85 leading-[1.75] max-w-xl">
+            Moj pristop temelji na znanosti in se je razvijal skozi več kot 12 let raznolikih strokovnih izkušenj. Vsako srečanje načrtujem prav za vas.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-3">
             <a href="#kontakt" class="btn btn-primary">Rezerviraj termin</a>
             <a href="tel:+38641906410" class="btn btn-outline text-paper border-paper/70 hover:bg-paper hover:text-ink">+386 41 906 410</a>
           </div>
+
+          <ul class="mt-12 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10.5px] font-semibold tracking-[0.22em] uppercase text-paper/85">
+            <li>Kineziologija</li>
+            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li>Masažna terapija</li>
+            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li>Osebno trenerstvo</li>
+            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li>Ergonomija</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <div class="relative px-6 md:px-10 pt-4 pb-4 flex items-center gap-3" data-hero-dots aria-label="Carousel">
-      <button type="button" aria-label="Slide 1" data-dot="0" class="h-1.5 w-7 bg-paper/80 transition rounded-full"></button>
-      <button type="button" aria-label="Slide 2" data-dot="1" class="h-1.5 w-7 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
-      <button type="button" aria-label="Slide 3" data-dot="2" class="h-1.5 w-7 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
+    <div class="relative px-6 md:px-14 pt-3 pb-3 flex items-center gap-2.5" data-hero-dots aria-label="Carousel">
+      <button type="button" aria-label="Slide 1" data-dot="0" class="h-1 w-8 bg-paper/85 transition rounded-full"></button>
+      <button type="button" aria-label="Slide 2" data-dot="1" class="h-1 w-8 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
+      <button type="button" aria-label="Slide 3" data-dot="2" class="h-1 w-8 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
     </div>
-    <div class="border-t border-paper/15 px-6 md:px-10 py-4 flex items-center justify-center text-[10.5px] font-medium tracking-[0.22em] uppercase text-paper/65">
+    <div class="border-t border-paper/15 px-6 md:px-14 py-4 flex items-center justify-center text-[10.5px] font-medium tracking-[0.22em] uppercase text-paper/65">
       <a href="#o-meni" class="underline underline-offset-4">Kako delam?</a>
     </div>
   </div>

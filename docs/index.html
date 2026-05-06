@@ -42,6 +42,9 @@
   <link rel="stylesheet" href="/kinesiologia/fonts.css">
   <link rel="stylesheet" href="/kinesiologia/assets/main.css">
 
+  <!-- Restore saved font choice before paint to avoid a flash of the wrong font. -->
+  <script>(function(){try{var f=localStorage.getItem("kt-font");if(f&&f!=="saira")document.documentElement.setAttribute("data-font",f);}catch(e){}})();</script>
+
   <!-- Schema.org LocalBusiness -->
   <script type="application/ld+json">
   {
@@ -104,6 +107,23 @@
     </nav>
 
     <div class="flex items-center gap-4 text-[12px]">
+      <!-- Font picker (desktop) -->
+      <div class="relative hidden md:block" data-font-picker>
+        <button type="button" data-font-toggle aria-haspopup="listbox" aria-expanded="false" aria-label="Choose font" class="inline-flex items-center gap-1.5 px-2 py-1.5 text-[11px] font-medium tracking-wider uppercase opacity-80 hover:opacity-100 transition">
+          <span class="text-[14px] tracking-normal" aria-hidden="true">Aa</span>
+          <span class="hidden xl:inline" data-font-current>Saira</span>
+          <svg viewBox="0 0 12 12" class="h-3 w-3" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg>
+        </button>
+        <ul data-font-list role="listbox" aria-label="Font" class="hidden absolute right-0 top-full mt-2 w-64 rounded-md bg-paper text-ink shadow-2xl border border-rule overflow-hidden z-[55]">
+          <li><button type="button" data-font-option="saira"     class="font-option" style="font-family:'Saira',system-ui,sans-serif"><span class="font-option-label">Saira</span><span class="font-option-note">Default · Klavika spirit</span></button></li>
+          <li><button type="button" data-font-option="helvetica" class="font-option" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif"><span class="font-option-label">Helvetica Neue</span><span class="font-option-note">Classic · system stack</span></button></li>
+          <li><button type="button" data-font-option="inter"     class="font-option" style="font-family:'Inter',system-ui,sans-serif"><span class="font-option-label">Inter</span><span class="font-option-note">Modern · neutral</span></button></li>
+          <li><button type="button" data-font-option="plex"      class="font-option" style="font-family:'IBM Plex Sans',system-ui,sans-serif"><span class="font-option-label">IBM Plex Sans</span><span class="font-option-note">Editorial · grounded</span></button></li>
+          <li><button type="button" data-font-option="manrope"   class="font-option" style="font-family:'Manrope',system-ui,sans-serif"><span class="font-option-label">Manrope</span><span class="font-option-note">Geometric · refined</span></button></li>
+          <li><button type="button" data-font-option="dm"        class="font-option" style="font-family:'DM Sans',system-ui,sans-serif"><span class="font-option-label">DM Sans</span><span class="font-option-note">Clean · contemporary</span></button></li>
+        </ul>
+      </div>
+
       <div class="hidden md:flex items-center gap-2 px-1 font-medium" aria-label="Languages">
         <a href="/kinesiologia/" class="underline underline-offset-4 decoration-[1.5px]" aria-current="page">EN</a>
         <!-- ES temporarily hidden — customer does not present as a Spanish-speaking kinesiologist -->
@@ -142,6 +162,23 @@
     </a>
     <a href="#contact" data-close>Contact</a>
   </nav>
+  <div class="px-10 pb-6 border-t border-paper/15 pt-6">
+    <p class="eyebrow text-paper/50 mb-3">Font</p>
+    <div class="relative" data-font-picker>
+      <button type="button" data-font-toggle aria-haspopup="listbox" aria-expanded="false" class="w-full inline-flex items-center justify-between gap-2 px-4 py-3 border border-paper/30 rounded-md text-sm">
+        <span class="inline-flex items-center gap-3"><span class="text-base" aria-hidden="true">Aa</span><span data-font-current>Saira</span></span>
+        <svg viewBox="0 0 12 12" class="h-3.5 w-3.5" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 4.5l3 3 3-3"/></svg>
+      </button>
+      <ul data-font-list role="listbox" aria-label="Font" class="hidden absolute left-0 right-0 bottom-full mb-2 rounded-md bg-paper text-ink shadow-2xl border border-rule overflow-hidden z-[65]">
+        <li><button type="button" data-font-option="saira"     class="font-option" style="font-family:'Saira',system-ui,sans-serif"><span class="font-option-label">Saira</span><span class="font-option-note">Default · Klavika spirit</span></button></li>
+        <li><button type="button" data-font-option="helvetica" class="font-option" style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif"><span class="font-option-label">Helvetica Neue</span><span class="font-option-note">Classic · system stack</span></button></li>
+        <li><button type="button" data-font-option="inter"     class="font-option" style="font-family:'Inter',system-ui,sans-serif"><span class="font-option-label">Inter</span><span class="font-option-note">Modern · neutral</span></button></li>
+        <li><button type="button" data-font-option="plex"      class="font-option" style="font-family:'IBM Plex Sans',system-ui,sans-serif"><span class="font-option-label">IBM Plex Sans</span><span class="font-option-note">Editorial · grounded</span></button></li>
+        <li><button type="button" data-font-option="manrope"   class="font-option" style="font-family:'Manrope',system-ui,sans-serif"><span class="font-option-label">Manrope</span><span class="font-option-note">Geometric · refined</span></button></li>
+        <li><button type="button" data-font-option="dm"        class="font-option" style="font-family:'DM Sans',system-ui,sans-serif"><span class="font-option-label">DM Sans</span><span class="font-option-note">Clean · contemporary</span></button></li>
+      </ul>
+    </div>
+  </div>
   <div class="px-10 pb-10 flex items-center justify-between text-sm">
     <div class="flex items-center gap-3">
       <a href="/kinesiologia/" aria-current="page">EN</a>
@@ -170,39 +207,58 @@
       <img src="https://s3.edpid.com/kinesiologia/gallery/balance-and-coordination.webp" alt="Balance and coordination work outdoors with the Atlantic in the background." width="1475" height="1920" class="absolute inset-0 h-full w-full object-cover" loading="lazy">
     </div>
   </div>
-  <div class="absolute inset-0 bg-gradient-to-b from-ink/55 via-ink/40 to-ink/85 pointer-events-none"></div>
-  <div class="absolute inset-0 bg-gradient-to-r from-ink/55 via-transparent to-transparent pointer-events-none"></div>
+  <!-- Single, deliberately-shaped scrim (deep at bottom-left where the type lives,
+       transparent toward the upper right so the photo still breathes). -->
+  <div class="absolute inset-0 hero-scrim pointer-events-none"></div>
 
   <div class="relative h-full flex-1 flex flex-col">
     <!-- Top headroom (extra spacing under the fixed header) -->
-    <div class="h-24 md:h-28 shrink-0"></div>
+    <div class="h-24 md:h-32 shrink-0"></div>
 
-    <!-- Main hero content — vertically centered in remaining space -->
-    <div class="flex-1 flex items-center px-6 md:px-10">
+    <!-- Hero content anchored to the bottom-left, where the scrim is darkest -->
+    <div class="flex-1 flex items-end px-6 md:px-14 pb-14 md:pb-20">
       <div class="grid grid-cols-12 gap-6 w-full">
-        <div class="col-span-12 lg:col-span-9">
-          <h1 class="text-[clamp(2.6rem,7.2vw,6.5rem)] font-bold leading-[0.95] tracking-tight">
-            The body that <em class="font-light italic">moves</em><br>
-            is the body <span class="text-brand-light">that heals.</span>
+        <div class="col-span-12 lg:col-span-9 xl:col-span-8">
+          <p class="eyebrow text-brand-light mb-7">Kinesiología Terapéutica GM</p>
+
+          <h1 class="text-[clamp(2.2rem,5.6vw,5.25rem)] font-semibold leading-[1.06] tracking-tight max-w-[18ch]">
+            Movement and relaxation<br class="hidden md:inline">
+            are <em class="font-light italic text-brand-light">essential medicine.</em>
           </h1>
-          <p class="mt-7 max-w-xl text-base md:text-lg text-paper/80 leading-relaxed">
-            Kinesiology, massage therapy and personal training, individually planned. Twelve years of clinical experience, on the north coast of Tenerife.
+
+          <p class="mt-9 text-lg md:text-2xl text-paper leading-snug font-light max-w-2xl">
+            Care for your body — regularly and thoughtfully.
           </p>
-          <div class="mt-8 flex flex-wrap gap-3">
+
+          <p class="mt-6 text-[15px] md:text-[17px] text-paper/85 leading-[1.75] max-w-xl">
+            My approach is based on science and has developed through more than 12 years of diverse professional experience. Each session is designed specifically for you.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-3">
             <a href="#contact" class="btn btn-primary">Book a consultation</a>
             <a href="tel:+34658725177" class="btn btn-outline text-paper border-paper/70 hover:bg-paper hover:text-ink">+34 658 72 51 77</a>
           </div>
+
+          <ul class="mt-12 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10.5px] font-semibold tracking-[0.22em] uppercase text-paper/85">
+            <li>Kinesiology</li>
+            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li>Massage therapy</li>
+            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li>Personal training</li>
+            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li>Ergonomics</li>
+          </ul>
         </div>
       </div>
     </div>
 
     <!-- Carousel dots + footer strip -->
-    <div class="relative px-6 md:px-10 pt-4 pb-4 flex items-center gap-3" data-hero-dots aria-label="Carousel">
-      <button type="button" aria-label="Slide 1" data-dot="0" class="h-1.5 w-7 bg-paper/80 transition rounded-full"></button>
-      <button type="button" aria-label="Slide 2" data-dot="1" class="h-1.5 w-7 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
-      <button type="button" aria-label="Slide 3" data-dot="2" class="h-1.5 w-7 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
+    <div class="relative px-6 md:px-14 pt-3 pb-3 flex items-center gap-2.5" data-hero-dots aria-label="Carousel">
+      <button type="button" aria-label="Slide 1" data-dot="0" class="h-1 w-8 bg-paper/85 transition rounded-full"></button>
+      <button type="button" aria-label="Slide 2" data-dot="1" class="h-1 w-8 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
+      <button type="button" aria-label="Slide 3" data-dot="2" class="h-1 w-8 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
     </div>
-    <div class="border-t border-paper/15 px-6 md:px-10 py-4 flex items-center justify-center text-[10.5px] font-medium tracking-[0.22em] uppercase text-paper/65">
+    <div class="border-t border-paper/15 px-6 md:px-14 py-4 flex items-center justify-center text-[10.5px] font-medium tracking-[0.22em] uppercase text-paper/65">
       <a href="#about" class="underline underline-offset-4">How I work?</a>
     </div>
   </div>

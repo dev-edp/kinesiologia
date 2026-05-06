@@ -24,7 +24,8 @@
   --color-accent-dark: #a4493f;
   --color-accent-soft: #f3d8d3;
 
-  /* Typography — Saira (Klavika-spirited geometric sans) for everything */
+  /* Typography — Saira (Klavika-spirited geometric sans) is the default.
+     Users can swap via the in-page font picker (see [data-font] selectors below). */
   --font-sans: "Klavika", "Saira", "Inter", system-ui, -apple-system, sans-serif;
   --font-display: "Klavika", "Saira", "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
@@ -162,11 +163,85 @@
 
   /* Reading max-width */
   .prose-measure { max-width: 58ch; }
+
+  /* Font picker rows — each row is rendered in the font it represents so the
+     visitor can compare looks at a glance. */
+  .font-option {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 0.7rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-rule-soft);
+    transition: background 150ms ease;
+    color: var(--color-ink);
+  }
+  .font-option:last-child { border-bottom: 0; }
+  .font-option:hover { background: var(--color-bone); }
+  .font-option.is-active { background: var(--color-brand-wash); }
+  .font-option.is-active::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--color-brand);
+    align-self: center;
+    flex-shrink: 0;
+  }
+  .font-option-label { font-size: 14px; font-weight: 600; letter-spacing: -0.01em; }
+  .font-option-note  { font-size: 11px; color: var(--color-ink-muted); font-weight: 500; }
 }
 
 /* Print */
 @media print {
   header, footer, nav, .no-print { display: none; }
+}
+
+/* In-page font picker — overrides --font-sans / --font-display when [data-font]
+   is set on <html>. Default (Saira / Klavika) needs no override. The matching
+   webfonts are injected on demand by the picker JS — listing them in the
+   stack is harmless if not yet loaded. */
+html[data-font="helvetica"] {
+  --font-sans: "Helvetica Neue", "Helvetica", "Arial", system-ui, -apple-system, sans-serif;
+  --font-display: "Helvetica Neue", "Helvetica", "Arial", system-ui, sans-serif;
+}
+html[data-font="inter"] {
+  --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Inter", system-ui, sans-serif;
+}
+html[data-font="plex"] {
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "IBM Plex Sans", system-ui, sans-serif;
+}
+html[data-font="manrope"] {
+  --font-sans: "Manrope", system-ui, -apple-system, sans-serif;
+  --font-display: "Manrope", system-ui, sans-serif;
+}
+html[data-font="dm"] {
+  --font-sans: "DM Sans", system-ui, -apple-system, sans-serif;
+  --font-display: "DM Sans", system-ui, sans-serif;
+}
+
+/* Hero scrim — a deeper diagonal wash anchored to the bottom-left where the
+   headline lives, so white text always reads cleanly regardless of the photo. */
+.hero-scrim {
+  background:
+    linear-gradient(
+      to top right,
+      color-mix(in srgb, var(--color-ink) 90%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 60%, transparent) 35%,
+      color-mix(in srgb, var(--color-ink) 25%, transparent) 65%,
+      transparent 100%
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in srgb, var(--color-ink) 35%, transparent) 0%,
+      transparent 30%,
+      transparent 60%,
+      color-mix(in srgb, var(--color-ink) 60%, transparent) 100%
+    );
 }
 
 /* Tailwind scans these locations for class usage */

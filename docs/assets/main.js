@@ -208,6 +208,90 @@
     });
   }
 
+  // --- Font picker --------------------------------------------
+  // Lets the visitor try a few sophisticated sans alternatives without a rebuild.
+  // Persisted in localStorage; webfont CSS is fetched on-demand the first time
+  // a non-default option is selected.
+  const FONTS = {
+    saira:     { label: "Saira",          note: "Default · Klavika spirit", css: null },
+    helvetica: { label: "Helvetica Neue", note: "Classic · system stack",    css: null },
+    inter:     { label: "Inter",          note: "Modern · neutral",          css: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" },
+    plex:      { label: "IBM Plex Sans",  note: "Editorial · grounded",      css: "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" },
+    manrope:   { label: "Manrope",        note: "Geometric · refined",       css: "https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" },
+    dm:        { label: "DM Sans",        note: "Clean · contemporary",      css: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" }
+  };
+  const FONT_STORAGE_KEY = "kt-font";
+  const cssLoaded = new Set();
+  function loadFontCss(key) {
+    const cfg = FONTS[key];
+    if (!cfg || !cfg.css || cssLoaded.has(key)) return;
+    // Google Fonts CSS needs preconnect for performance, but the <link> alone
+    // is enough for it to work — keep it light, no preconnect needed.
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = cfg.css;
+    link.setAttribute("data-font-css", key);
+    document.head.appendChild(link);
+    cssLoaded.add(key);
+  }
+  function applyFont(key, persist = true) {
+    if (!FONTS[key]) key = "saira";
+    loadFontCss(key);
+    if (key === "saira") document.documentElement.removeAttribute("data-font");
+    else document.documentElement.setAttribute("data-font", key);
+    if (persist) {
+      try { localStorage.setItem(FONT_STORAGE_KEY, key); } catch (_) {}
+    }
+    // Update every visible font-current label + checked state in every picker
+    $$("[data-font-current]").forEach((el) => { el.textContent = FONTS[key].label; });
+    $$("[data-font-list] [data-font-option]").forEach((btn) => {
+      const on = btn.getAttribute("data-font-option") === key;
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+      btn.classList.toggle("is-active", on);
+    });
+  }
+  function initFontPicker() {
+    let saved = "saira";
+    try { saved = localStorage.getItem(FONT_STORAGE_KEY) || "saira"; } catch (_) {}
+    applyFont(saved, false);
+
+    $$("[data-font-picker]").forEach((picker) => {
+      const toggle = picker.querySelector("[data-font-toggle]");
+      const list = picker.querySelector("[data-font-list]");
+      if (!toggle || !list) return;
+      toggle.addEventListener("click", (e) => {
+        e.stopPropagation();
+        const open = !list.classList.contains("hidden");
+        // Close every other picker first
+        $$("[data-font-picker] [data-font-list]").forEach((l) => l.classList.add("hidden"));
+        $$("[data-font-picker] [data-font-toggle]").forEach((t) => t.setAttribute("aria-expanded", "false"));
+        if (!open) {
+          list.classList.remove("hidden");
+          toggle.setAttribute("aria-expanded", "true");
+        }
+      });
+      list.querySelectorAll("[data-font-option]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          applyFont(btn.getAttribute("data-font-option"));
+          list.classList.add("hidden");
+          toggle.setAttribute("aria-expanded", "false");
+        });
+      });
+    });
+    // Click-outside to close
+    document.addEventListener("click", (e) => {
+      if (e.target.closest("[data-font-picker]")) return;
+      $$("[data-font-picker] [data-font-list]").forEach((l) => l.classList.add("hidden"));
+      $$("[data-font-picker] [data-font-toggle]").forEach((t) => t.setAttribute("aria-expanded", "false"));
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      $$("[data-font-picker] [data-font-list]").forEach((l) => l.classList.add("hidden"));
+      $$("[data-font-picker] [data-font-toggle]").forEach((t) => t.setAttribute("aria-expanded", "false"));
+    });
+  }
+  initFontPicker();
+
   // --- Leaflet map --------------------------------------------
   const mapEl = document.getElementById("map");
   function initMap() {
