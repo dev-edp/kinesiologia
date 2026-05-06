@@ -196,19 +196,9 @@
 
 <!-- ======================= HERO ======================= -->
 <section class="relative min-h-[88vh] md:min-h-screen overflow-hidden text-paper flex flex-col">
-  <div class="absolute inset-0" data-hero-carousel>
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-100" data-slide="0">
-      <img src="https://s3.edpid.com/kinesiologia/hero/atlantic-terrace.webp" alt="Gregor Mišič assessing a client on a terrace overlooking the Atlantic, Los Realejos, Tenerife." width="2000" height="1547" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" loading="eager">
-    </div>
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="1">
-      <img src="https://s3.edpid.com/kinesiologia/portrait/gregor-portrait-tall.webp" alt="Gregor Mišič outdoors in Tenerife, Atlantic and palms behind." width="1200" height="1797" class="absolute inset-0 h-full w-full object-cover object-top" loading="lazy">
-    </div>
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" data-slide="2">
-      <img src="https://s3.edpid.com/kinesiologia/gallery/balance-and-coordination.webp" alt="Balance and coordination work outdoors with the Atlantic in the background." width="1475" height="1920" class="absolute inset-0 h-full w-full object-cover" loading="lazy">
-    </div>
-  </div>
-  <!-- Single, deliberately-shaped scrim (deep at bottom-left where the type lives,
-       transparent toward the upper right so the photo still breathes). -->
+  <img src="https://s3.edpid.com/kinesiologia/hero/atlantic-terrace.webp" alt="Gregor Mišič assessing a client on a terrace overlooking the Atlantic, Los Realejos, Tenerife." width="2000" height="1547" class="absolute inset-0 h-full w-full object-cover" fetchpriority="high" loading="eager">
+  <!-- Multi-layer scrim: deep at the bottom-left where the headline lives,
+       fading toward the upper right so the photo still breathes. -->
   <div class="absolute inset-0 hero-scrim pointer-events-none"></div>
 
   <div class="relative h-full flex-1 flex flex-col">
@@ -219,18 +209,20 @@
     <div class="flex-1 flex items-end px-6 md:px-14 pb-14 md:pb-20">
       <div class="grid grid-cols-12 gap-6 w-full">
         <div class="col-span-12 lg:col-span-9 xl:col-span-8">
-          <p class="eyebrow text-brand-light mb-7">Kinesiología Terapéutica GM</p>
+          <p class="eyebrow text-paper/95 mb-7">
+            <span class="inline-block align-middle h-px w-7 bg-paper/70 mr-3"></span>Kinesiología Terapéutica GM
+          </p>
 
-          <h1 class="text-[clamp(2.2rem,5.6vw,5.25rem)] font-semibold leading-[1.06] tracking-tight max-w-[18ch]">
+          <h1 class="text-[clamp(2.2rem,5.6vw,5.25rem)] font-semibold leading-[1.06] tracking-tight max-w-[18ch] text-paper">
             Movement and relaxation<br class="hidden md:inline">
-            are <em class="font-light italic text-brand-light">essential medicine.</em>
+            are <em class="font-light italic">essential medicine.</em>
           </h1>
 
           <p class="mt-9 text-lg md:text-2xl text-paper leading-snug font-light max-w-2xl">
             Care for your body — regularly and thoughtfully.
           </p>
 
-          <p class="mt-6 text-[15px] md:text-[17px] text-paper/85 leading-[1.75] max-w-xl">
+          <p class="mt-6 text-[15px] md:text-[17px] text-paper/90 leading-[1.75] max-w-xl">
             My approach is based on science and has developed through more than 12 years of diverse professional experience. Each session is designed specifically for you.
           </p>
 
@@ -239,26 +231,20 @@
             <a href="tel:+34658725177" class="btn btn-outline text-paper border-paper/70 hover:bg-paper hover:text-ink">+34 658 72 51 77</a>
           </div>
 
-          <ul class="mt-12 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10.5px] font-semibold tracking-[0.22em] uppercase text-paper/85">
+          <ul class="mt-12 flex flex-wrap items-center gap-x-3 gap-y-2 text-[10.5px] font-semibold tracking-[0.22em] uppercase text-paper/90">
             <li>Kinesiology</li>
-            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li class="text-paper/40" aria-hidden="true">·</li>
             <li>Massage therapy</li>
-            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li class="text-paper/40" aria-hidden="true">·</li>
             <li>Personal training</li>
-            <li class="text-paper/30" aria-hidden="true">·</li>
+            <li class="text-paper/40" aria-hidden="true">·</li>
             <li>Ergonomics</li>
           </ul>
         </div>
       </div>
     </div>
 
-    <!-- Carousel dots + footer strip -->
-    <div class="relative px-6 md:px-14 pt-3 pb-3 flex items-center gap-2.5" data-hero-dots aria-label="Carousel">
-      <button type="button" aria-label="Slide 1" data-dot="0" class="h-1 w-8 bg-paper/85 transition rounded-full"></button>
-      <button type="button" aria-label="Slide 2" data-dot="1" class="h-1 w-8 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
-      <button type="button" aria-label="Slide 3" data-dot="2" class="h-1 w-8 bg-paper/30 hover:bg-paper/50 transition rounded-full"></button>
-    </div>
-    <div class="border-t border-paper/15 px-6 md:px-14 py-4 flex items-center justify-center text-[10.5px] font-medium tracking-[0.22em] uppercase text-paper/65">
+    <div class="border-t border-paper/15 px-6 md:px-14 py-4 flex items-center justify-center text-[10.5px] font-medium tracking-[0.22em] uppercase text-paper/70">
       <a href="#about" class="underline underline-offset-4">How I work?</a>
     </div>
   </div>

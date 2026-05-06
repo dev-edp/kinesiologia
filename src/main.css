@@ -224,23 +224,33 @@ html[data-font="dm"] {
   --font-display: "DM Sans", system-ui, sans-serif;
 }
 
-/* Hero scrim — a deeper diagonal wash anchored to the bottom-left where the
-   headline lives, so white text always reads cleanly regardless of the photo. */
+/* Hero scrim — three stacked layers anchored to the bottom-left so white
+   type reads cleanly against any photo. The first layer dominates the text
+   column, the second anchors the bottom band (buttons + pillars), the third
+   adds a soft vertical fade so the top doesn't feel detached. */
 .hero-scrim {
   background:
+    /* 1. Heavy bottom-left scrim under the headline + body copy */
     linear-gradient(
       to top right,
-      color-mix(in srgb, var(--color-ink) 90%, transparent) 0%,
-      color-mix(in srgb, var(--color-ink) 60%, transparent) 35%,
-      color-mix(in srgb, var(--color-ink) 25%, transparent) 65%,
+      color-mix(in srgb, var(--color-ink) 96%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 82%, transparent) 28%,
+      color-mix(in srgb, var(--color-ink) 50%, transparent) 55%,
+      color-mix(in srgb, var(--color-ink) 18%, transparent) 80%,
       transparent 100%
     ),
+    /* 2. Bottom horizontal anchor for buttons / pillars / dots */
+    linear-gradient(
+      to top,
+      color-mix(in srgb, var(--color-ink) 78%, transparent) 0%,
+      color-mix(in srgb, var(--color-ink) 30%, transparent) 35%,
+      transparent 65%
+    ),
+    /* 3. Subtle top fade so the header sits on continuous tone */
     linear-gradient(
       to bottom,
       color-mix(in srgb, var(--color-ink) 35%, transparent) 0%,
-      transparent 30%,
-      transparent 60%,
-      color-mix(in srgb, var(--color-ink) 60%, transparent) 100%
+      transparent 30%
     );
 }
 
